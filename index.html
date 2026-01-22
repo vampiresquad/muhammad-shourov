@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Muhammad Shourov (Vampire)</title>
-  <meta name="description" content="Muhammad Shourov (Vampire) — Ethical Hacker, Founder of Vampire Squad, Cyber Security Consultant & Writer from Bangladesh.">
+  <meta name="description" content="Muhammad Shourov (Vampire) — Ethical Hacker, Founder of Vampire Squad, Cyber Security Consultant & Writer from Bangladesh." />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- ===== NAVBAR ===== -->
+  <!-- PARTICLE CANVAS -->
+  <canvas id="particles"></canvas>
+
+  <!-- CURSOR GLOW -->
+  <div class="cursor-glow"></div>
+
+  <!-- NAVBAR -->
   <header class="nav">
     <div class="logo">Vampire</div>
     <nav>
@@ -24,7 +33,7 @@
     </nav>
   </header>
 
-  <!-- ===== HERO ===== -->
+  <!-- HERO -->
   <section id="home" class="section hero">
     <img src="vampire.png" alt="Muhammad Shourov" class="hero-img">
     <h1>Muhammad Shourov</h1>
@@ -36,17 +45,21 @@
     </div>
   </section>
 
-  <!-- ===== ABOUT ===== -->
+  <!-- ABOUT -->
   <section id="about" class="section">
     <h2>About Me</h2>
     <p>
-      A curious creation of the Creator.  
-      I walk a path shaped by solitude, discipline, and responsibility.  
-      Writing is how I breathe, security is my duty.
+      I choose solitude over noise.<br>
+      Discipline over chaos.<br>
+      Responsibility over comfort.
+    </p>
+    <p>
+      I write to breathe.<br>
+      I secure to protect.
     </p>
   </section>
 
-  <!-- ===== SERVICES ===== -->
+  <!-- SERVICES -->
   <section id="services" class="section dark">
     <h2>What I Do</h2>
     <div class="cards">
@@ -56,7 +69,7 @@
     </div>
   </section>
 
-  <!-- ===== SKILLS ===== -->
+  <!-- SKILLS -->
   <section id="skills" class="section">
     <h2>Skills & Interests</h2>
     <div class="tags">
@@ -68,14 +81,23 @@
     </div>
   </section>
 
-  <!-- ===== TOOLS ===== -->
+  <!-- TOOLS -->
   <section id="tools" class="section dark">
     <h2>Open Source & Tools</h2>
     <p>Selected projects from my GitHub profile.</p>
     <div id="tools-container" class="cards"></div>
   </section>
 
-  <!-- ===== CONTACT ===== -->
+  <!-- TERMINAL -->
+  <section class="section dark">
+    <h2>Terminal Access</h2>
+    <button class="btn outline" id="toggle-terminal">Open Terminal</button>
+    <div id="terminal-box">
+      <pre id="terminal-text"></pre>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
   <section id="contact" class="section">
     <h2>Get in Touch</h2>
 
@@ -97,9 +119,12 @@
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
+  <!-- FOOTER -->
   <footer>
-    <p>© 2025 Muhammad Shourov (Vampire)</p>
+    <p>
+      Built with discipline & faith.<br>
+      Muhammad Shourov (Vampire)
+    </p>
   </footer>
 
   <script src="script.js"></script>
