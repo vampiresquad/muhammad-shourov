@@ -4,7 +4,7 @@ console.log(`
 > Welcome.
 `);
 
-// SMOOTH SCROLL
+/* Smooth scroll */
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.onclick = e => {
     e.preventDefault();
@@ -13,7 +13,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   };
 });
 
-// TYPING EFFECT
+/* Typing effect */
 const roles = [
   'Ethical Hacker',
   'Founder of Vampire Squad',
@@ -26,12 +26,12 @@ const subtitle = document.querySelector('.subtitle');
 (function type() {
   const text = roles[r];
   subtitle.textContent = del ? text.slice(0, c--) : text.slice(0, c++);
-  if (!del && c > text.length + 10) del = true;
+  if (!del && c > text.length + 8) del = true;
   if (del && c === 0) { del = false; r = (r + 1) % roles.length; }
   setTimeout(type, del ? 40 : 80);
 })();
 
-// SECTION REVEAL
+/* Section reveal */
 const sections = document.querySelectorAll('.section');
 const reveal = () => sections.forEach(s => {
   if (s.getBoundingClientRect().top < innerHeight - 120) s.classList.add('show');
@@ -39,7 +39,7 @@ const reveal = () => sections.forEach(s => {
 window.addEventListener('scroll', reveal);
 reveal();
 
-// PARTICLES
+/* Particles */
 const canvas = document.getElementById('particles');
 const ctx = canvas.getContext('2d');
 let w, h, dots = [];
@@ -50,30 +50,30 @@ function resize() {
 }
 resize(); window.onresize = resize;
 
-for (let i = 0; i < 60; i++) {
+for (let i = 0; i < 50; i++) {
   dots.push({ x: Math.random()*w, y: Math.random()*h, dx: Math.random()-0.5, dy: Math.random()-0.5 });
 }
 
 (function animate() {
   ctx.clearRect(0,0,w,h);
-  ctx.fillStyle = 'rgba(34,211,238,0.4)';
+  ctx.fillStyle = 'rgba(34,211,238,0.35)';
   dots.forEach(d => {
     d.x+=d.dx; d.y+=d.dy;
     if(d.x<0||d.x>w) d.dx*=-1;
     if(d.y<0||d.y>h) d.dy*=-1;
-    ctx.beginPath(); ctx.arc(d.x,d.y,1.5,0,Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.arc(d.x,d.y,1.4,0,Math.PI*2); ctx.fill();
   });
   requestAnimationFrame(animate);
 })();
 
-// CURSOR
+/* Cursor glow */
 const glow = document.querySelector('.cursor-glow');
 document.addEventListener('mousemove', e => {
   glow.style.left = e.clientX + 'px';
   glow.style.top = e.clientY + 'px';
 });
 
-// TERMINAL
+/* Terminal */
 const btn = document.getElementById('toggle-terminal');
 const box = document.getElementById('terminal-box');
 const txt = document.getElementById('terminal-text');
@@ -84,14 +84,15 @@ const lines = [
   'Status: Active',
   'Access Granted.'
 ];
+
 btn.onclick = () => {
   box.style.display = box.style.display === 'block' ? 'none' : 'block';
   txt.textContent = '';
   let i = 0;
   (function typeLine(){
-    if(i<lines.length){
+    if(i < lines.length){
       txt.textContent += lines[i++] + '\n';
-      setTimeout(typeLine, 400);
+      setTimeout(typeLine, 350);
     }
   })();
 };
