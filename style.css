@@ -52,10 +52,8 @@ a {
   margin: auto;
   text-align: center;
   scroll-margin-top: 90px;
-}
 
-/* Cinematic depth base */
-.section {
+  /* cinematic reveal */
   opacity: 0;
   transform: translateY(90px) scale(0.94);
   transition:
@@ -87,59 +85,105 @@ a {
   margin: 0 auto 1.2rem;
 }
 
-/* 🔥 SUBTITLE – CLS FREE + CINEMATIC */
+/* ================= SUBTITLE (FINAL, CLS FREE) ================= */
 .subtitle {
-  width: 360px;                 /* FIXED WIDTH = no reflow */
+  width: 460px;              /* FIXED WIDTH → no up/down */
+  height: 2rem;              /* FIXED HEIGHT */
   margin: 0 auto 2rem;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
   font-size: 1.05rem;
   font-weight: 500;
-  opacity: .85;
   position: relative;
+  overflow: hidden;
 }
 
-.subtitle span {
-  display: block;
-  min-height: 1.6em;
-  transition: opacity .45s ease, transform .45s ease;
+#subtitle-text {
+  white-space: nowrap;
 }
 
-/* Fade states controlled by JS */
-.subtitle.fade-out span {
-  opacity: 0;
-  transform: translateY(-6px);
-}
-
-.subtitle.fade-in span {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Cinematic underline wave */
+/* underline glow */
 .subtitle::after {
   content: "";
   position: absolute;
-  left: 50%;
   bottom: -8px;
-  width: 120px;
-  height: 1px;
+  left: 50%;
   transform: translateX(-50%);
+  width: 150px;
+  height: 1px;
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(34,211,238,.7),
+    rgba(34,211,238,.85),
     transparent
   );
-  animation: subtitleWave 3.5s ease-in-out infinite;
+  animation: subtitleGlow 3.2s ease-in-out infinite;
 }
 
-@keyframes subtitleWave {
-  0% { opacity: .2; }
-  50% { opacity: .8; }
-  100% { opacity: .2; }
+@keyframes subtitleGlow {
+  0% { opacity: .25; }
+  50% { opacity: .9; }
+  100% { opacity: .25; }
 }
 
-/* Hero tagline */
+/* ================= ROLE ICONS (REAL ANIMATION) ================= */
+.role-icon i {
+  font-size: 1.1rem;
+  color: #22d3ee;
+  display: inline-block;
+}
+
+/* Ethical Hacker → Skull pulse */
+.icon-hacker i {
+  animation: skullPulse 2.6s ease-in-out infinite;
+}
+
+@keyframes skullPulse {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgba(34,211,238,0));
+  }
+  50% {
+    transform: scale(1.18);
+    filter: drop-shadow(0 0 6px rgba(34,211,238,.8));
+  }
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgba(34,211,238,0));
+  }
+}
+
+/* Writer → Pen float */
+.icon-writer i {
+  animation: penFloat 3s ease-in-out infinite;
+}
+
+@keyframes penFloat {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
+
+/* Cyber roles → Shield glow */
+.icon-cyber i {
+  animation: shieldGlow 2.8s ease-in-out infinite;
+}
+
+@keyframes shieldGlow {
+  0% {
+    filter: drop-shadow(0 0 0 rgba(34,211,238,0));
+  }
+  50% {
+    filter: drop-shadow(0 0 8px rgba(34,211,238,.9));
+  }
+  100% {
+    filter: drop-shadow(0 0 0 rgba(34,211,238,0));
+  }
+}
+
+/* ================= HERO TAGLINE ================= */
 .hero-tagline {
   margin: 1rem auto 2rem;
   max-width: 560px;
