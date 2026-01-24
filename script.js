@@ -88,7 +88,7 @@ if (btn) {
     })();
   };
 }
-/* Cinematic scroll observer */
+/* ===== CINEMATIC SCROLL TRIGGER (FINAL) ===== */
 const sections = document.querySelectorAll(".section");
 
 const observer = new IntersectionObserver(
@@ -97,14 +97,12 @@ const observer = new IntersectionObserver(
       if (entry.isIntersecting) {
         setTimeout(() => {
           entry.target.classList.add("visible");
-        }, 220); // cinematic pause
+        }, 280); // intentional cinematic pause
         observer.unobserve(entry.target);
       }
     });
   },
-  {
-    threshold: 0.12
-  }
+  { threshold: 0.1 }
 );
 
 sections.forEach(section => observer.observe(section));
