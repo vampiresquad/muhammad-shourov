@@ -241,17 +241,41 @@ footer {
   opacity: .6;
   margin-top: 1rem;
 }
-/* Scroll reveal base state (heavier) */
+/* Cinematic section base */
 .section {
   opacity: 0;
-  transform: translateY(50px) scale(0.98);
+  transform: translateY(70px) scale(0.96);
   transition:
-    opacity 1.2s ease,
-    transform 1.2s cubic-bezier(.16,1,.3,1);
+    opacity 1.6s ease,
+    transform 1.6s cubic-bezier(.12,1,.28,1);
+  will-change: transform, opacity;
 }
 
-/* When visible */
+/* When section is visible */
 .section.visible {
   opacity: 1;
   transform: translateY(0) scale(1);
+}
+
+/* Inner cinematic stagger */
+.section.visible h2,
+.section.visible p,
+.section.visible .card,
+.section.visible .hero-img,
+.section.visible .hero-tagline,
+.section.visible .hero-buttons {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: cinematicFade 1.2s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+.section.visible h2 { animation-delay: .15s; }
+.section.visible p { animation-delay: .35s; }
+.section.visible .card { animation-delay: .5s; }
+
+@keyframes cinematicFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
