@@ -241,37 +241,51 @@ footer {
   opacity: .6;
   margin-top: 1rem;
 }
-/* Cinematic section base */
+/* ===== CINEMATIC DEPTH BASE ===== */
 .section {
   opacity: 0;
-  transform: translateY(70px) scale(0.96);
+  transform: translateY(90px) scale(0.94);
   transition:
-    opacity 1.6s ease,
-    transform 1.6s cubic-bezier(.12,1,.28,1);
+    opacity 1.9s ease,
+    transform 1.9s cubic-bezier(.1,1,.25,1);
   will-change: transform, opacity;
 }
 
-/* When section is visible */
+/* Section enters */
 .section.visible {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
 
-/* Inner cinematic stagger */
+/* ===== INNER STAGGER (SCENE BUILD) ===== */
 .section.visible h2,
-.section.visible p,
-.section.visible .card,
-.section.visible .hero-img,
-.section.visible .hero-tagline,
-.section.visible .hero-buttons {
+.section.visible .hero-img {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(40px);
+  animation: cinematicFade 1.1s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+.section.visible p,
+.section.visible .hero-tagline {
+  opacity: 0;
+  transform: translateY(36px);
+  animation: cinematicFade 1.15s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+.section.visible .card {
+  opacity: 0;
+  transform: translateY(34px);
   animation: cinematicFade 1.2s cubic-bezier(.22,1,.36,1) forwards;
 }
 
-.section.visible h2 { animation-delay: .15s; }
-.section.visible p { animation-delay: .35s; }
-.section.visible .card { animation-delay: .5s; }
+/* ===== STAGGER DELAYS ===== */
+.section.visible h2,
+.section.visible .hero-img { animation-delay: .18s; }
+
+.section.visible p,
+.section.visible .hero-tagline { animation-delay: .42s; }
+
+.section.visible .card { animation-delay: .68s; }
 
 @keyframes cinematicFade {
   to {
