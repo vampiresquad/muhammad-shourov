@@ -22,6 +22,7 @@ a {
   color: inherit;
 }
 
+/* ================= NAV ================= */
 .nav {
   position: fixed;
   top: 0;
@@ -44,6 +45,7 @@ a {
   opacity: 1;
 }
 
+/* ================= SECTIONS ================= */
 .section {
   padding: 5.5rem 1.2rem;
   max-width: 900px;
@@ -52,10 +54,26 @@ a {
   scroll-margin-top: 90px;
 }
 
+/* Cinematic depth base */
+.section {
+  opacity: 0;
+  transform: translateY(90px) scale(0.94);
+  transition:
+    opacity 1.9s ease,
+    transform 1.9s cubic-bezier(.1,1,.25,1);
+  will-change: transform, opacity;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
 .dark {
   background: #050914;
 }
 
+/* ================= HERO ================= */
 .hero {
   padding-top: 7rem;
 }
@@ -69,17 +87,59 @@ a {
   margin: 0 auto 1.2rem;
 }
 
+/* 🔥 SUBTITLE – CLS FREE + CINEMATIC */
 .subtitle {
-  opacity: .75;
-  min-height: 1.6em;
-  line-height: 1.6em;      /* layout jump বন্ধ */
-  display: inline-block;
+  width: 360px;                 /* FIXED WIDTH = no reflow */
+  margin: 0 auto 2rem;
+  text-align: center;
   font-size: 1.05rem;
   font-weight: 500;
-  white-space: nowrap;     /* text wrap বন্ধ */
+  opacity: .85;
   position: relative;
 }
 
+.subtitle span {
+  display: block;
+  min-height: 1.6em;
+  transition: opacity .45s ease, transform .45s ease;
+}
+
+/* Fade states controlled by JS */
+.subtitle.fade-out span {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+.subtitle.fade-in span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Cinematic underline wave */
+.subtitle::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  width: 120px;
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(34,211,238,.7),
+    transparent
+  );
+  animation: subtitleWave 3.5s ease-in-out infinite;
+}
+
+@keyframes subtitleWave {
+  0% { opacity: .2; }
+  50% { opacity: .8; }
+  100% { opacity: .2; }
+}
+
+/* Hero tagline */
 .hero-tagline {
   margin: 1rem auto 2rem;
   max-width: 560px;
@@ -87,6 +147,7 @@ a {
   opacity: .75;
 }
 
+/* ================= BUTTONS ================= */
 .btn {
   padding: .85rem 1.7rem;
   border-radius: 30px;
@@ -110,6 +171,7 @@ a {
   box-shadow: 0 8px 20px rgba(0,0,0,.25);
 }
 
+/* ================= CARDS ================= */
 .cards {
   display: grid;
   gap: 1rem;
@@ -142,6 +204,7 @@ a {
   line-height: 1.6;
 }
 
+/* ================= TOOLS ================= */
 .tools-intro,
 .terminal-note,
 .contact-intro {
@@ -179,6 +242,7 @@ a {
   opacity: 1;
 }
 
+/* ================= TERMINAL ================= */
 #terminal-box {
   display: none;
   margin-top: 1.5rem;
@@ -201,6 +265,7 @@ a {
   transform: translateY(0);
 }
 
+/* ================= CONTACT ================= */
 .contact-form {
   max-width: 420px;
   margin: 2.5rem auto;
@@ -234,6 +299,7 @@ a {
   opacity: 1;
 }
 
+/* ================= FOOTER ================= */
 footer {
   padding: 2rem;
   text-align: center;
@@ -244,79 +310,4 @@ footer {
 .muted {
   opacity: .6;
   margin-top: 1rem;
-}
-/* ===== CINEMATIC DEPTH BASE ===== */
-.section {
-  opacity: 0;
-  transform: translateY(90px) scale(0.94);
-  transition:
-    opacity 1.9s ease,
-    transform 1.9s cubic-bezier(.1,1,.25,1);
-  will-change: transform, opacity;
-}
-
-/* Section enters */
-.section.visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-/* ===== INNER STAGGER (SCENE BUILD) ===== */
-.section.visible h2,
-.section.visible .hero-img {
-  opacity: 0;
-  transform: translateY(40px);
-  animation: cinematicFade 1.1s cubic-bezier(.22,1,.36,1) forwards;
-}
-
-.section.visible p,
-.section.visible .hero-tagline {
-  opacity: 0;
-  transform: translateY(36px);
-  animation: cinematicFade 1.15s cubic-bezier(.22,1,.36,1) forwards;
-}
-
-.section.visible .card {
-  opacity: 0;
-  transform: translateY(34px);
-  animation: cinematicFade 1.2s cubic-bezier(.22,1,.36,1) forwards;
-}
-
-/* ===== STAGGER DELAYS ===== */
-.section.visible h2,
-.section.visible .hero-img { animation-delay: .18s; }
-
-.section.visible p,
-.section.visible .hero-tagline { animation-delay: .42s; }
-
-.section.visible .card { animation-delay: .68s; }
-
-@keyframes cinematicFade {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-/* Subtitle cinematic glow wave */
-.subtitle::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(34,211,238,.6),
-    transparent
-  );
-  opacity: .6;
-  animation: subtitleGlow 3.5s ease-in-out infinite;
-}
-
-@keyframes subtitleGlow {
-  0%   { opacity: .2; }
-  50%  { opacity: .8; }
-  100% { opacity: .2; }
 }
