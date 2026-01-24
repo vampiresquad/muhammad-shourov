@@ -11,9 +11,13 @@ const sub = document.querySelector(".subtitle");
 
 (function type() {
   const text = roles[r];
+  sub.style.opacity = "0";
   sub.textContent = del ? text.slice(0, --c) : text.slice(0, ++c);
 
-  if (!del && c > text.length + 6) del = true;
+if (!del && c > text.length + 6) {
+  sub.style.opacity = "1";   // soft fade in
+  del = true;
+}
   if (del && c === 0) {
     del = false;
     r = (r + 1) % roles.length;
