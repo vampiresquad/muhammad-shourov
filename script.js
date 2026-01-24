@@ -1,4 +1,5 @@
-/* Typing effect */
+/* ================= SUBTITLE CINEMATIC ROTATION (CLS FREE) ================= */
+
 const roles = [
   "Ethical Hacker",
   "Founder of Vampire Squad",
@@ -6,26 +7,38 @@ const roles = [
   "Writer"
 ];
 
-let r = 0, c = 0, del = false;
-const sub = document.querySelector(".subtitle");
+const subtitle = document.querySelector(".subtitle");
+const subtitleText = document.getElementById("subtitle-text");
 
-(function type() {
-  const text = roles[r];
-  sub.style.opacity = "0";
-  sub.textContent = del ? text.slice(0, --c) : text.slice(0, ++c);
+let roleIndex = 0;
 
-if (!del && c > text.length + 6) {
-  sub.style.opacity = "1";   // soft fade in
-  del = true;
+/*
+  IMPORTANT:
+  - No typing delete
+  - No width/height change
+  - Only fade-out → text swap → fade-in
+*/
+function rotateSubtitle() {
+  subtitle.classList.remove("fade-in");
+  subtitle.classList.add("fade-out");
+
+  setTimeout(() => {
+    subtitleText.textContent = roles[roleIndex];
+    subtitle.classList.remove("fade-out");
+    subtitle.classList.add("fade-in");
+
+    roleIndex = (roleIndex + 1) % roles.length;
+  }, 450); // fade-out duration
 }
-  if (del && c === 0) {
-    del = false;
-    r = (r + 1) % roles.length;
-  }
-  setTimeout(type, del ? 45 : 85);
-})();
 
-/* GitHub projects */
+// initial load
+rotateSubtitle();
+
+// rotation interval
+setInterval(rotateSubtitle, 3200);
+
+/* ================= GITHUB PROJECTS ================= */
+
 const grid = document.getElementById("tools-grid");
 const status = document.getElementById("tools-status");
 
@@ -57,7 +70,8 @@ fetch("https://api.github.com/users/vampiresquad/repos")
     status.textContent = "Projects are temporarily unavailable.";
   });
 
-/* Terminal */
+/* ================= TERMINAL ================= */
+
 const btn = document.getElementById("toggle-terminal");
 const box = document.getElementById("terminal-box");
 const txt = document.getElementById("terminal-text");
@@ -77,22 +91,27 @@ if (btn) {
 
   btn.onclick = () => {
     box.classList.toggle("active");
-    btn.textContent = box.classList.contains("active") ? "Close Terminal" : "Open Terminal";
+    btn.textContent = box.classList.contains("active")
+      ? "Close Terminal"
+      : "Open Terminal";
 
     if (opened) return;
     opened = true;
 
     txt.textContent = "";
     let i = 0;
-    (function t() {
+
+    (function typeTerminal() {
       if (i < lines.length) {
         txt.textContent += lines[i++] + "\n";
-        setTimeout(t, 350);
+        setTimeout(typeTerminal, 350);
       }
     })();
   };
 }
-/* ===== CINEMATIC SCROLL TRIGGER (FINAL) ===== */
+
+/* ================= CINEMATIC SCROLL REVEAL ================= */
+
 const sections = document.querySelectorAll(".section");
 
 const observer = new IntersectionObserver(
@@ -101,7 +120,7 @@ const observer = new IntersectionObserver(
       if (entry.isIntersecting) {
         setTimeout(() => {
           entry.target.classList.add("visible");
-        }, 280); // intentional cinematic pause
+        }, 280); // cinematic pause
         observer.unobserve(entry.target);
       }
     });
