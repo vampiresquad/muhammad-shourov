@@ -69,14 +69,12 @@ typeText();
 const grid = document.getElementById("tools-grid");
 const status = document.getElementById("tools-status");
 
-/* Featured (Already shown manually in HTML) */
 const featuredRepos = [
   "webtrix",
   "quicktools",
   "toolzen"
 ];
 
-/* Manual Hide List (YOUR LIST) */
 const hideRepos = [
   "muhammad_shourov",
   "vampire-blog",
@@ -94,17 +92,9 @@ fetch("https://api.github.com/users/vampiresquad/repos")
 
     const list = repos
       .filter(r => !r.fork)
-
-      /* Remove Featured */
       .filter(r => !featuredRepos.includes(r.name.toLowerCase()))
-
-      /* Remove Hidden */
       .filter(r => !hideRepos.includes(r.name.toLowerCase()))
-
-      /* Sort by Stars */
       .sort((a, b) => b.stargazers_count - a.stargazers_count)
-
-      /* Limit */
       .slice(0, 6);
 
     if (!list.length) {
@@ -130,27 +120,106 @@ fetch("https://api.github.com/users/vampiresquad/repos")
     status.textContent = "Projects are temporarily unavailable.";
   });
 
-/* ================= TERMINAL ================= */
+/* ================= TERMINAL (DEEP DARK STORYTELLING VERSION) ================= */
 
 const btn = document.getElementById("toggle-terminal");
 const box = document.getElementById("terminal-box");
 const txt = document.getElementById("terminal-text");
 
 if (btn) {
+
   const lines = [
-    "> Initializing secure environment...",
-    "> Identity verified.",
-    "> Role: Ethical Hacker",
-    "> Principle: Responsibility before curiosity",
-    "> Status: Active",
+    "> Boot sequence initiated...",
+    "> Synchronizing system clock...",
+    "> Stabilizing memory sectors...",
+    "> Loading silent execution modules...",
+    "",
+    "> Establishing encrypted environment...",
+    "> Cipher layer engaged [AES-256]",
+    "> Noise suppression filter: Active",
+    "> External interference: Minimal",
+    "",
+    "> Accessing identity vault...",
+    "> Decrypting signature imprint...",
+    "> Verifying behavioral fingerprint...",
+    "> Cross-matching digital shadow...",
+    "",
+    "> Identity Confirmed:",
+    "> Name: Muhammad Shourov",
+    "> Alias: Vampire",
+    "> Origin: Bangladesh",
+    "> Domain: Cyber Security & Ethical Research",
+    "",
+    "> Loading Professional Matrix...",
+    "> Primary Role: Ethical Hacker",
+    "> Secondary Role: Cyber Security Specialist",
+    "> Advisory Role: Digital Risk Awareness",
+    "> Cognitive Extension: Writer & Observer",
+    "",
+    "> Psychological Profile Loaded:",
+    "> Preference: Silence over noise",
+    "> Method: Discipline over chaos",
+    "> Decision Core: Responsibility over comfort",
+    "",
+    "> Memory Reflection:",
+    "> Resources were limited.",
+    "> Shortcuts were absent.",
+    "> Curiosity became the teacher.",
+    "> Mistakes became the curriculum.",
+    "> Silence became the training ground.",
+    "",
+    "> Network Presence Analysis...",
+    "> Public Noise Level: Low",
+    "> Exposure Surface: Controlled",
+    "> Monitoring Mode: Passive Observation",
+    "",
+    "> Threat Philosophy:",
+    "> Not every vulnerability is technical.",
+    "> Most are human.",
+    "> Most are predictable.",
+    "> Most are preventable.",
+    "",
+    "> Ethical Core Loading...",
+    "> Principle 01: Knowledge without ethics is destruction.",
+    "> Principle 02: Access without permission is intrusion.",
+    "> Principle 03: Power without control is chaos.",
+    "",
+    "> Operational Status:",
+    "> Cognitive State: Focused",
+    "> Emotional Noise: Suppressed",
+    "> Awareness Layer: Maximum",
+    "> Execution Mode: Selective",
+    "",
+    '> Personal Log:',
+    '> "Silence is not emptiness.',
+    '> Silence is preparation.',
+    '> Silence is observation.',
+    '> Silence is survival."',
+    "",
+    "> Session Authorized.",
+    "> Passive monitoring enabled.",
+    "> Logging existence...",
     "",
     "vampire@shourov:~$"
   ];
 
   let opened = false;
 
+  /* Blinking Cursor */
+  const cursor = document.createElement("span");
+  cursor.textContent = "█";
+  cursor.style.marginLeft = "4px";
+
+  let blink = true;
+  setInterval(() => {
+    cursor.style.opacity = blink ? "1" : "0";
+    blink = !blink;
+  }, 550);
+
   btn.onclick = () => {
+
     box.classList.toggle("active");
+
     btn.textContent = box.classList.contains("active")
       ? "Close Terminal"
       : "Open Terminal";
@@ -162,12 +231,18 @@ if (btn) {
     let i = 0;
 
     (function typeTerminal() {
+
       if (i < lines.length) {
         txt.textContent += lines[i++] + "\n";
-        setTimeout(typeTerminal, 350);
+        setTimeout(typeTerminal, 120);
+      } else {
+        txt.appendChild(cursor);
       }
+
     })();
+
   };
+
 }
 
 /* ================= CINEMATIC SCROLL REVEAL ================= */
