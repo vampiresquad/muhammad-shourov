@@ -30,7 +30,6 @@ const iconWrapper = document.querySelector(".role-icon");
 let roleIndex = 0;
 let charIndex = 0;
 
-/* typing only – NO delete (CLS safe) */
 function typeText() {
   const role = roles[roleIndex];
 
@@ -38,25 +37,20 @@ function typeText() {
     subtitleText.textContent = role.text.slice(0, charIndex++);
     setTimeout(typeText, 90);
   } else {
-    // pause after full typing
     setTimeout(switchRole, 1800);
   }
 }
 
 function switchRole() {
-  // fade-out (visual only, no layout change)
   subtitleText.style.opacity = "0";
 
   setTimeout(() => {
-    // move to next role
     roleIndex = (roleIndex + 1) % roles.length;
     charIndex = 0;
 
-    // update icon safely
     iconWrapper.className = `role-icon ${roles[roleIndex].cls}`;
     iconWrapper.innerHTML = `<i class="fa-solid ${roles[roleIndex].icon}"></i>`;
 
-    // reset text + fade-in
     subtitleText.textContent = "";
     subtitleText.style.opacity = "1";
 
@@ -64,24 +58,27 @@ function switchRole() {
   }, 450);
 }
 
-/* initial state */
 iconWrapper.className = `role-icon ${roles[0].cls}`;
 iconWrapper.innerHTML = `<i class="fa-solid ${roles[0].icon}"></i>`;
 subtitleText.style.transition = "opacity .4s ease";
 
-/* start typing */
 typeText();
 
-/* ================= GITHUB PROJECTS ================= */
+/* ================= GITHUB PROJECTS (UPDATED WITH FEATURED FILTER) ================= */
 
 const grid = document.getElementById("tools-grid");
 const status = document.getElementById("tools-status");
 
+/* Featured projects already shown manually in HTML */
+const featuredRepos = ["webtrix", "quicktools", "toolzen"];
+
 fetch("https://api.github.com/users/vampiresquad/repos")
   .then(res => res.json())
   .then(repos => {
+
     const list = repos
       .filter(r => !r.fork)
+      .filter(r => !featuredRepos.includes(r.name.toLowerCase()))
       .sort((a, b) => b.stargazers_count - a.stargazers_count)
       .slice(0, 6);
 
@@ -93,13 +90,16 @@ fetch("https://api.github.com/users/vampiresquad/repos")
     list.forEach(repo => {
       const card = document.createElement("div");
       card.className = "card";
+
       card.innerHTML = `
         <h3>${repo.name}</h3>
         <p>${repo.description || "No description provided."}</p>
         <a href="${repo.html_url}" target="_blank">View on GitHub</a>
       `;
+
       grid.appendChild(card);
     });
+
   })
   .catch(() => {
     status.textContent = "Projects are temporarily unavailable.";
@@ -155,7 +155,7 @@ const observer = new IntersectionObserver(
       if (entry.isIntersecting) {
         setTimeout(() => {
           entry.target.classList.add("visible");
-        }, 280); // cinematic pause
+        }, 280);
         observer.unobserve(entry.target);
       }
     });
@@ -165,5 +165,4 @@ const observer = new IntersectionObserver(
 
 sections.forEach(section => observer.observe(section));
 
-/* Hero shows instantly */
 document.querySelector(".hero")?.classList.add("visible");
