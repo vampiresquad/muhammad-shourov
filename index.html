@@ -4,339 +4,439 @@
 <meta charset="UTF-8" />
 <meta name="google-site-verification" content="-fV3MpkFtEgnaFZc9eqy_k2X86N79Zh9_Rcrd2-dqs8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
 <title>Muhammad Shourov | Vampire</title>
 <meta name="description" content="Muhammad Shourov (Vampire) – Ethical Hacker, Cyber Security Specialist, Founder of Vampire Squad, and Creative Writer from Bangladesh.">
-
 <link rel="canonical" href="https://vampiresquad.github.io/muhammad-shourov/">
-
 <meta property="og:title" content="Muhammad Shourov (Vampire)">
 <meta property="og:description" content="Ethical Hacker • Founder of Vampire Squad • Cyber Security Specialist • Writer">
 <meta property="og:image" content="https://vampiresquad.github.io/muhammad-shourov/vampire.png">
 <meta property="og:url" content="https://vampiresquad.github.io/muhammad-shourov/">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Share+Tech+Mono&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="cyber-grid"></div>
-<div class="custom-cursor" id="custom-cursor"></div>
-<div class="cursor-trail" id="cursor-trail"></div>
+<!-- Scroll Progress Bar -->
+<div class="scroll-progress" id="scroll-progress"></div>
 
-<header class="nav">
-<div class="logo">
-  <span class="logo-text">Vampire</span>
-  <span class="blinking-cursor">_</span>
-</div>
-<nav>
-<a href="#home"><i class="fa-solid fa-house"></i> Home</a>
-<a href="#about"><i class="fa-solid fa-user-astronaut"></i> About</a>
-<a href="#journey"><i class="fa-solid fa-route"></i> Journey</a>
-<a href="#skills"><i class="fa-solid fa-fingerprint"></i> Identity</a>
-<a href="#vampire-squad"><i class="fa-solid fa-users-viewfinder"></i> Squad</a>
-<a href="#tools"><i class="fa-solid fa-folder-open"></i> Projects</a>
-<a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
-</nav>
+<!-- Canvas Particle Background -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- Custom Cursor -->
+<div class="cursor-dot" id="cursor-dot"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<!-- ============ NAVIGATION ============ -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#home" class="logo">
+      <span class="logo-bracket">[</span>
+      <span class="logo-text">Vampire</span>
+      <span class="logo-cursor">_</span>
+      <span class="logo-bracket">]</span>
+    </a>
+    <nav class="nav-links" id="nav-links">
+      <a href="#home"          class="nav-link"><span class="nav-num">01.</span>Home</a>
+      <a href="#about"         class="nav-link"><span class="nav-num">02.</span>About</a>
+      <a href="#journey"       class="nav-link"><span class="nav-num">03.</span>Journey</a>
+      <a href="#skills"        class="nav-link"><span class="nav-num">04.</span>Identity</a>
+      <a href="#vampire-squad" class="nav-link"><span class="nav-num">05.</span>Squad</a>
+      <a href="#tools"         class="nav-link"><span class="nav-num">06.</span>Projects</a>
+      <a href="#contact"       class="nav-link"><span class="nav-num">07.</span>Contact</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </header>
 
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#home"          class="mobile-link">Home</a>
+  <a href="#about"         class="mobile-link">About</a>
+  <a href="#journey"       class="mobile-link">Journey</a>
+  <a href="#skills"        class="mobile-link">Identity</a>
+  <a href="#vampire-squad" class="mobile-link">Squad</a>
+  <a href="#tools"         class="mobile-link">Projects</a>
+  <a href="#contact"       class="mobile-link">Contact</a>
+</div>
+
+<!-- ============ HERO ============ -->
 <section id="home" class="section hero">
-<div class="hero-image-wrapper">
-  <img src="vampire.png" alt="Muhammad Shourov" class="hero-img">
-  <div class="glow-ring"></div>
-</div>
+  <div class="hero-content">
 
-<h1 class="glitch-title" data-text="Muhammad Shourov">Muhammad Shourov</h1>
+    <div class="hero-image-col">
+      <div class="hero-img-wrapper">
+        <div class="img-glow-ring"></div>
+        <img src="vampire.png" alt="Muhammad Shourov" class="hero-img">
+        <div class="img-scan-line"></div>
+      </div>
+      <div class="hero-status">
+        <span class="status-dot"></span>
+        <span>ONLINE</span>
+      </div>
+    </div>
 
-<p class="subtitle">
-<span class="role-icon"></span>
-<span id="subtitle-text">Cyber Security Specialist & Creative Writer</span>
-</p>
+    <div class="hero-text-col">
+      <div class="hero-greeting">
+        <span class="greeting-dash"></span>
+        <span>BANGLADESH &bull; MYMENSINGH</span>
+      </div>
+      <h1 class="hero-name">
+        <span class="name-first">Muhammad</span>
+        <span class="name-last">Shourov</span>
+      </h1>
+      <div class="hero-alias">
+        <span class="alias-label">alias:</span>
+        <span class="alias-val">Vampire</span>
+      </div>
+      <div class="hero-role">
+        <span class="role-arrow">&gt;</span>
+        <span id="subtitle-text"></span>
+        <span class="type-caret">|</span>
+      </div>
+      <div class="hero-tagline">
+        <p>A combination of technology, creativity, and deep thinking.</p>
+        <p>I work in silence. I build security. I write what cannot be spoken.</p>
+      </div>
+      <div class="hero-cta">
+        <a href="#tools"   class="btn btn-primary"><i class="fa-solid fa-terminal"></i> Explore My Work</a>
+        <a href="#contact" class="btn btn-ghost"><i class="fa-solid fa-paper-plane"></i> Contact Me</a>
+      </div>
+    </div>
 
-<div class="hero-tagline-box">
-<p class="hero-tagline">
-A combination of technology, creativity, and deep thinking.<br>
-I work in silence. I build security. I write what cannot be spoken.
-</p>
-</div>
-
-<div class="hero-buttons">
-<a href="#tools" class="btn primary"><i class="fa-solid fa-terminal"></i> Explore My Work</a>
-<a href="#contact" class="btn outline"><i class="fa-solid fa-paper-plane"></i> Contact Me</a>
-</div>
+  </div>
+  <div class="hero-scroll-hint">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
 </section>
 
-<section id="about" class="section">
-<div class="section-header">
-  <h2><i class="fa-solid fa-user-secret"></i> About Me</h2>
-  <div class="header-line"></div>
-</div>
-
-<div class="about-content">
-  <p class="lead-text">
-  Hailing from Mymensingh, Bangladesh, I choose solitude over noise, discipline over chaos, and responsibility over comfort.
-  </p>
-  <p>
-  I learned security through curiosity, mistakes, and silence. <br>
-  Writing became a way to understand myself, and cyber security became a way to protect others.
-  </p>
-  
-  <div class="philosophy-box">
-    <i class="fa-solid fa-quote-left quote-icon"></i>
-    <p><em>"If I cannot help someone, I will never harm them."</em></p>
+<!-- ============ ABOUT ============ -->
+<section id="about" class="section reveal">
+  <div class="section-label">02 / ABOUT</div>
+  <div class="section-header">
+    <h2><i class="fa-solid fa-user-secret"></i> About Me</h2>
+    <div class="header-line"></div>
   </div>
-
-  <div class="bengali-quote">
-    <p>"তেমন উল্লেখযোগ্য কোনো অর্জন নেই 'গুনাহ' ব্যতীত! ধ্বংসস্তূপ -।"</p>
-    <span class="quote-author"><i class="fa-solid fa-pen-nib"></i> লিখতে ভালোবাসি (সাহিত্যিক)</span>
+  <div class="about-grid">
+    <div class="about-main">
+      <p class="lead-text">Hailing from Mymensingh, Bangladesh, I choose solitude over noise, discipline over chaos, and responsibility over comfort.</p>
+      <p class="about-body">I learned security through curiosity, mistakes, and silence.<br>Writing became a way to understand myself, and cyber security became a way to protect others.</p>
+      <div class="philosophy-box">
+        <div class="quote-mark">"</div>
+        <p>If I cannot help someone, I will never harm them.</p>
+      </div>
+    </div>
+    <div class="about-side">
+      <div class="bengali-card">
+        <p class="bengali-text">"তেমন উল্লেখযোগ্য কোনো অর্জন নেই 'গুনাহ' ব্যতীত! ধ্বংসস্তূপ -।"</p>
+        <span class="bengali-by"><i class="fa-solid fa-pen-nib"></i> লিখতে ভালোবাসি (সাহিত্যিক)</span>
+      </div>
+      <div class="about-tags">
+        <span class="tag">Ethical Hacker</span>
+        <span class="tag">Security Researcher</span>
+        <span class="tag">Creative Writer</span>
+        <span class="tag">Founder</span>
+        <span class="tag">Bangladesh</span>
+        <span class="tag">Mymensingh</span>
+      </div>
+    </div>
   </div>
-</div>
 </section>
 
-<section id="journey" class="section dark">
-<div class="section-header">
-  <h2><i class="fa-solid fa-briefcase"></i> Professional Journey</h2>
-  <div class="header-line"></div>
-</div>
+<!-- ============ JOURNEY ============ -->
+<section id="journey" class="section section-dark reveal">
+  <div class="section-label">03 / JOURNEY</div>
+  <div class="section-header">
+    <h2><i class="fa-solid fa-briefcase"></i> Professional Journey</h2>
+    <div class="header-line"></div>
+  </div>
+  <div class="timeline">
+    <div class="timeline-track"></div>
 
-<div class="timeline">
-  
-  <div class="timeline-item">
-    <div class="timeline-dot current"></div>
-    <div class="timeline-content">
-      <span class="timeline-date">2024 - Present</span>
-      <h3>AJR Parcel And Courier Service</h3>
-      <p>Continuing professional responsibilities while expanding digital security expertise.</p>
+    <div class="timeline-item reveal-item">
+      <div class="t-marker current"><div class="t-pulse"></div></div>
+      <div class="t-content">
+        <div class="t-date">2024 — Present</div>
+        <h3 class="t-title">AJR Parcel And Courier Service</h3>
+        <p class="t-desc">Continuing professional responsibilities while expanding digital security expertise.</p>
+        <span class="t-badge">Current Position</span>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal-item">
+      <div class="t-marker"><div class="t-pulse"></div></div>
+      <div class="t-content">
+        <div class="t-date">2023 — 5 Months</div>
+        <h3 class="t-title">Posh Foot Awayer</h3>
+        <p class="t-desc">Gained operational experience and discipline in a professional environment.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal-item">
+      <div class="t-marker"><div class="t-pulse"></div></div>
+      <div class="t-content">
+        <div class="t-date">2022 — 2 Months</div>
+        <h3 class="t-title">Banglalink</h3>
+        <p class="t-desc">Initial exposure to corporate workflow and communication.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ IDENTITY & SKILLS ============ -->
+<section id="skills" class="section reveal">
+  <div class="section-label">04 / IDENTITY</div>
+  <div class="section-header">
+    <h2><i class="fa-solid fa-microchip"></i> Identity &amp; Skills</h2>
+    <div class="header-line"></div>
+  </div>
+  <div class="skills-grid">
+
+    <div class="skill-card reveal-item">
+      <div class="skill-card-inner">
+        <div class="sk-icon"><i class="fa-solid fa-shield-virus"></i></div>
+        <h3>Cyber Security &amp; Tech</h3>
+        <p class="sk-desc">Protecting people from scams and building secure environments.</p>
+        <ul class="sk-list">
+          <li>Ethical Hacking &amp; Vulnerability Research</li>
+          <li>Python, HTML5, CSS3, Vanilla JS</li>
+          <li>Firebase Firestore &amp; PWA Architecture</li>
+        </ul>
+      </div>
+      <div class="card-glow"></div>
+    </div>
+
+    <div class="skill-card reveal-item">
+      <div class="skill-card-inner">
+        <div class="sk-icon"><i class="fa-solid fa-book-open"></i></div>
+        <h3>Literature &amp; Creativity</h3>
+        <p class="sk-desc">Carrying the soul of a writer beyond the terminal.</p>
+        <ul class="sk-list">
+          <li>Writing Stories, Poems &amp; Novels</li>
+          <li>Author of "অতৃপ্ত"</li>
+          <li>Author of "উড়ো চিঠি"</li>
+        </ul>
+      </div>
+      <div class="card-glow"></div>
+    </div>
+
+    <div class="skill-card reveal-item">
+      <div class="skill-card-inner">
+        <div class="sk-icon"><i class="fa-solid fa-dna"></i></div>
+        <h3>Personal Traits</h3>
+        <p class="sk-desc">Unique abilities and multilingual identity.</p>
+        <ul class="sk-list">
+          <li>Languages: Bengali, English, Hindi</li>
+          <li>Loves solitude, nature &amp; singing</li>
+          <li>Breath holding capacity: 1 min 10 sec</li>
+        </ul>
+      </div>
+      <div class="card-glow"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ VAMPIRE SQUAD ============ -->
+<section id="vampire-squad" class="section section-dark reveal">
+  <div class="section-label">05 / SQUAD</div>
+  <div class="section-header">
+    <h2><i class="fa-solid fa-mask"></i> Vampire Squad</h2>
+    <div class="header-line"></div>
+  </div>
+  <p class="section-intro">A group of cyber warriors working to protect people in the virtual world.</p>
+  <div class="squad-container">
+    <div class="squad-emblem-wrap">
+      <div class="squad-hex"><i class="fa-solid fa-shield-halved"></i></div>
+    </div>
+    <div class="squad-info">
+      <h3 class="squad-name">Vampire Squad</h3>
+      <p class="squad-mission">
+        <strong>Mission Objective:</strong> To spread awareness about cyber threats, stand against online injustice, and ensure discipline in digital spaces by protecting people from scams and fraud.
+      </p>
+      <div class="squad-links">
+        <a href="https://facebook.com/groups/680909887708553"                   target="_blank" class="squad-link"><i class="fa-brands fa-facebook"></i> Group</a>
+        <a href="https://www.facebook.com/profile.php?id=61574803393816"        target="_blank" class="squad-link"><i class="fa-brands fa-facebook-f"></i> Page</a>
+        <a href="https://t.me/Vampire_Squad"                                    target="_blank" class="squad-link"><i class="fa-brands fa-telegram"></i> Telegram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section id="tools" class="section reveal">
+  <div class="section-label">06 / PROJECTS</div>
+  <div class="section-header">
+    <h2><i class="fa-solid fa-laptop-code"></i> Platforms &amp; Projects</h2>
+    <div class="header-line"></div>
+  </div>
+  <p class="section-intro">Engineered to solve real-world digital problems and improve online productivity.</p>
+
+  <!-- Masterpiece -->
+  <div class="proj-category">
+    <div class="cat-label"><i class="fa-solid fa-star"></i> Masterpiece Project</div>
+    <div class="trox-showcase">
+      <div class="trox-crown"><i class="fa-solid fa-crown"></i> TOP TIER</div>
+      <div class="trox-left">
+        <h3 class="trox-title">Trox</h3>
+        <p class="trox-sub">The Hacker's Note Vault — v2.0</p>
+        <p class="trox-desc">A cyber-themed secure note vault designed for hackers and developers. Web Crypto API, custom XSS sanitizer, offline PWA, and cloud sync — built with precision.</p>
+        <div class="trox-stack">
+          <span>Vanilla JS</span><span>Firebase</span><span>PWA</span><span>Web Crypto</span>
+        </div>
+      </div>
+      <div class="trox-right">
+        <div class="trox-feat"><i class="fa-solid fa-lock"></i> Web Crypto API &amp; XSS Sanitizer</div>
+        <div class="trox-feat"><i class="fa-solid fa-key"></i> Password Protected Vault</div>
+        <div class="trox-feat"><i class="fa-solid fa-wifi"></i> Offline PWA + Cloud Sync</div>
+        <div class="trox-feat"><i class="fa-solid fa-toolbox"></i> Built-in Cyber Tools</div>
+      </div>
     </div>
   </div>
 
-  <div class="timeline-item">
-    <div class="timeline-dot"></div>
-    <div class="timeline-content">
-      <span class="timeline-date">2023 (5 Months)</span>
-      <h3>Posh Foot Awayer</h3>
-      <p>Gained operational experience and discipline in a professional environment.</p>
+  <!-- Featured Platforms -->
+  <div class="proj-category">
+    <div class="cat-label"><i class="fa-solid fa-rocket"></i> Featured Platforms</div>
+    <div class="projects-grid">
+
+      <div class="project-card reveal-item">
+        <div class="proj-top">
+          <span class="pbadge live"><i class="fa-solid fa-circle-dot"></i> LIVE</span>
+          <span class="pver">v1.0 &bull; Feb 2026</span>
+        </div>
+        <h3>WebTrix</h3>
+        <p>Advanced productivity and utility tools platform.</p>
+        <a href="https://vampiresquad.github.io/webtrix/" target="_blank" class="proj-link">Open Platform <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </div>
+
+      <div class="project-card reveal-item">
+        <div class="proj-top">
+          <span class="pbadge live"><i class="fa-solid fa-circle-dot"></i> LIVE</span>
+          <span class="pver">v1.0 &bull; Feb 2026</span>
+        </div>
+        <h3>QuickTools</h3>
+        <p>Fast and simple everyday digital utility tools.</p>
+        <a href="https://vampiresquad.github.io/quicktools/" target="_blank" class="proj-link">Open Platform <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </div>
+
+      <div class="project-card reveal-item">
+        <div class="proj-top">
+          <span class="pbadge live"><i class="fa-solid fa-circle-dot"></i> LIVE</span>
+          <span class="pver">v1.0 &bull; Feb 2026</span>
+        </div>
+        <h3>ToolZen</h3>
+        <p>Minimal and lightweight tool collection.</p>
+        <a href="https://vampiresquad.github.io/toolzen/" target="_blank" class="proj-link">Open Platform <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      </div>
+
     </div>
   </div>
 
-  <div class="timeline-item">
-    <div class="timeline-dot"></div>
-    <div class="timeline-content">
-      <span class="timeline-date">2022 (2 Months)</span>
-      <h3>Banglalink</h3>
-      <p>Initial exposure to corporate workflow and communication.</p>
+  <!-- GitHub Open Source -->
+  <div class="proj-category">
+    <div class="cat-label"><i class="fa-brands fa-github"></i> Open Source Repository</div>
+    <div id="tools-grid" class="projects-grid"></div>
+    <p id="tools-status" class="loading-text"><i class="fa-solid fa-circle-notch fa-spin"></i> Fetching data from GitHub...</p>
+  </div>
+</section>
+
+<!-- ============ TERMINAL ============ -->
+<section class="section section-dark reveal">
+  <div class="section-label">SYS / TERMINAL</div>
+  <div class="section-header">
+    <h2><i class="fa-solid fa-terminal"></i> Terminal Access</h2>
+    <div class="header-line"></div>
+  </div>
+  <p class="section-intro">Not for interaction. Just a reflection of mindset.</p>
+  <button id="toggle-terminal" class="btn btn-terminal">
+    <i class="fa-solid fa-power-off"></i> Initialize Terminal
+  </button>
+  <div id="terminal-box" class="terminal-box">
+    <div class="terminal-header">
+      <div class="t-dots">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+      </div>
+      <span class="terminal-title">vampire@sys-admin:~$</span>
+      <span class="terminal-secure">SECURE</span>
+    </div>
+    <div class="terminal-body">
+      <pre id="terminal-text"></pre>
     </div>
   </div>
-
-</div>
 </section>
 
-<section id="skills" class="section">
-<div class="section-header">
-  <h2><i class="fa-solid fa-microchip"></i> Identity & Skills</h2>
-  <div class="header-line"></div>
-</div>
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="section reveal">
+  <div class="section-label">07 / CONTACT</div>
+  <div class="section-header">
+    <h2><i class="fa-solid fa-satellite-dish"></i> Get in Touch</h2>
+    <div class="header-line"></div>
+  </div>
+  <p class="section-intro">If your concern is security, clarity, or digital awareness — secure a transmission below.</p>
+  <div class="contact-grid">
 
-<div class="cards">
+    <form class="contact-form" action="https://formspree.io/f/xpwoyvzz" method="POST">
+      <div class="form-group">
+        <label>Your Name</label>
+        <div class="input-wrap">
+          <i class="fa-solid fa-user"></i>
+          <input type="text" name="name" placeholder="Enter your name" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <div class="input-wrap">
+          <i class="fa-solid fa-envelope"></i>
+          <input type="email" name="email" placeholder="Enter your email" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <div class="input-wrap">
+          <i class="fa-solid fa-message"></i>
+          <textarea name="message" placeholder="Write your message here..." required></textarea>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary submit-btn">
+        <i class="fa-solid fa-paper-plane"></i> Send Transmission
+      </button>
+    </form>
 
-<div class="card premium-card">
-  <div class="card-icon"><i class="fa-solid fa-shield-virus"></i></div>
-  <strong>Cyber Security & Tech</strong>
-  <p class="card-note">Protecting people from scams and building secure environments.</p>
-  <ul class="custom-list">
-      <li>Ethical Hacking & Vulnerability Research</li>
-      <li>Python, HTML5, CSS3, Vanilla JS</li>
-      <li>Firebase Firestore & PWA Architecture</li>
-  </ul>
-</div>
+    <div class="contact-info">
+      <h3>Connect with Vampire</h3>
+      <p>Available for security consultations, writing collaborations, and digital awareness initiatives.</p>
+      <div class="social-list">
+        <a href="https://github.com/vampiresquad"                       target="_blank" class="social-row"><i class="fa-brands fa-github"></i><span>GitHub</span><i class="fa-solid fa-arrow-right arr"></i></a>
+        <a href="https://www.facebook.com/the.devastated.writer"        target="_blank" class="social-row"><i class="fa-brands fa-facebook"></i><span>Facebook</span><i class="fa-solid fa-arrow-right arr"></i></a>
+        <a href="https://www.instagram.com/the.devastated_writer"       target="_blank" class="social-row"><i class="fa-brands fa-instagram"></i><span>Instagram</span><i class="fa-solid fa-arrow-right arr"></i></a>
+        <a href="https://www.threads.com/@the.devastated_writer"        target="_blank" class="social-row"><i class="fa-brands fa-threads"></i><span>Threads</span><i class="fa-solid fa-arrow-right arr"></i></a>
+        <a href="mailto:vampiresquad.org@gmail.com"                                     class="social-row"><i class="fa-solid fa-envelope"></i><span>Email</span><i class="fa-solid fa-arrow-right arr"></i></a>
+      </div>
+    </div>
 
-<div class="card premium-card">
-  <div class="card-icon"><i class="fa-solid fa-book-open"></i></div>
-  <strong>Literature & Creativity</strong>
-  <p class="card-note">Carrying the soul of a writer beyond the terminal.</p>
-  <ul class="custom-list">
-      <li>Writing Stories, Poems & Novels</li>
-      <li>Author of "অতৃপ্ত"</li>
-      <li>Author of "উড়ো চিঠি"</li>
-  </ul>
-</div>
-
-<div class="card premium-card">
-  <div class="card-icon"><i class="fa-solid fa-dna"></i></div>
-  <strong>Personal Traits</strong>
-  <p class="card-note">Unique abilities and languages.</p>
-  <ul class="custom-list">
-      <li>Languages: Bengali, English, Hindi</li>
-      <li>Loves solitude, nature & singing</li>
-      <li>Breath holding capacity: 1 min 10 seconds</li>
-  </ul>
-</div>
-
-</div>
+  </div>
 </section>
 
-<section id="vampire-squad" class="section dark">
-<div class="section-header">
-  <h2><i class="fa-solid fa-mask"></i> Vampire Squad</h2>
-  <div class="header-line"></div>
-</div>
-
-<p class="tools-intro">
-A group of cyber warriors working to protect people in the virtual world.
-</p>
-<div class="squad-box glitch-border">
-  <div class="squad-emblem">
-    <i class="fa-solid fa-shield-halved"></i>
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <span class="logo-bracket">[</span><span>Vampire</span><span class="logo-bracket">]</span>
+    </div>
+    <p class="footer-tag">Built with discipline, patience, and faith.</p>
+    <p class="footer-credit"><i class="fa-solid fa-code"></i> Muhammad Shourov (Vampire) — Bangladesh</p>
   </div>
-  <p class="squad-mission">
-    <strong>Mission Objective:</strong> To spread awareness about cyber threats, stand against online injustice, and ensure discipline in digital spaces by protecting people from scams and fraud.
-  </p>
-  <div class="squad-links">
-      <a href="https://facebook.com/groups/680909887708553" target="_blank" class="btn outline squad-btn"><i class="fa-brands fa-facebook"></i> Group</a>
-      <a href="https://www.facebook.com/profile.php?id=61574803393816" target="_blank" class="btn outline squad-btn"><i class="fa-brands fa-facebook-f"></i> Page</a>
-      <a href="https://t.me/Vampire_Squad" target="_blank" class="btn outline squad-btn"><i class="fa-brands fa-telegram"></i> Telegram</a>
-  </div>
-</div>
-</section>
-
-<section id="tools" class="section">
-<div class="section-header">
-  <h2><i class="fa-solid fa-laptop-code"></i> Platforms & Projects</h2>
-  <div class="header-line"></div>
-</div>
-
-<p class="tools-intro">
-Engineered to solve real-world digital problems and improve online productivity.
-</p>
-
-<h3 class="featured-title"><i class="fa-solid fa-star"></i> Masterpiece Project</h3>
-
-<div class="cards major-project-container">
-<div class="card featured trox-card">
-  <div class="project-status">
-    <span class="status-badge status-elite"><i class="fa-solid fa-crown"></i> TOP TIER</span>
-  </div>
-  <h3>Trox – The Hacker's Note Vault (v2.0)</h3>
-  <p>A cyber-themed secure note vault designed for hackers and developers.</p>
-  <div class="tech-stack-tags">
-    <span>Vanilla JS</span>
-    <span>Firebase</span>
-    <span>PWA</span>
-    <span>Web Crypto</span>
-  </div>
-  <ul class="custom-list">
-      <li>Web Crypto API & Custom XSS Sanitizer for ultimate security.</li>
-      <li>Password Protected Vault & Built-in Cyber Tools.</li>
-      <li>Offline PWA Support with Cloud Sync capabilities.</li>
-  </ul>
-</div>
-</div>
-
-<h3 class="featured-title"><i class="fa-solid fa-rocket"></i> Featured Platforms</h3>
-
-<div class="cards">
-<div class="card featured hover-glitch">
-  <div class="project-status"><span class="status-badge status-live"><i class="fa-solid fa-circle-dot"></i> LIVE</span></div>
-  <div class="project-meta">Version: v1.0 • Updated: Feb 2026</div>
-  <h3>WebTrix</h3>
-  <p>Advanced productivity and utility tools platform.</p>
-  <a href="https://vampiresquad.github.io/webtrix/" target="_blank" class="project-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open Platform</a>
-</div>
-
-<div class="card featured hover-glitch">
-  <div class="project-status"><span class="status-badge status-live"><i class="fa-solid fa-circle-dot"></i> LIVE</span></div>
-  <div class="project-meta">Version: v1.0 • Updated: Feb 2026</div>
-  <h3>QuickTools</h3>
-  <p>Fast and simple everyday digital utility tools.</p>
-  <a href="https://vampiresquad.github.io/quicktools/" target="_blank" class="project-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open Platform</a>
-</div>
-
-<div class="card featured hover-glitch">
-  <div class="project-status"><span class="status-badge status-live"><i class="fa-solid fa-circle-dot"></i> LIVE</span></div>
-  <div class="project-meta">Version: v1.0 • Updated: Feb 2026</div>
-  <h3>ToolZen</h3>
-  <p>Minimal and lightweight tool collection.</p>
-  <a href="https://vampiresquad.github.io/toolzen/" target="_blank" class="project-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open Platform</a>
-</div>
-</div>
-
-<h3 class="featured-title"><i class="fa-brands fa-github"></i> Open Source Repository</h3>
-
-<div id="tools-grid"></div>
-<p id="tools-status" class="muted"><i class="fa-solid fa-circle-notch fa-spin"></i> Fetching secure data from GitHub...</p>
-
-</section>
-
-<section class="section dark">
-<div class="section-header">
-  <h2><i class="fa-solid fa-terminal"></i> Terminal Access</h2>
-  <div class="header-line"></div>
-</div>
-
-<p class="terminal-note">
-Not for interaction. Just a reflection of mindset.
-</p>
-
-<button id="toggle-terminal" class="btn btn-terminal">
-  <i class="fa-solid fa-power-off"></i> Initialize Terminal
-</button>
-<div id="terminal-box" class="scanline-effect">
-  <div class="terminal-header">
-    <span class="dot red"></span>
-    <span class="dot yellow"></span>
-    <span class="dot green"></span>
-    <span class="terminal-title">vampire@sys-admin:~</span>
-  </div>
-  <pre id="terminal-text"></pre>
-</div>
-</section>
-
-<section id="contact" class="section">
-
-<div class="section-header">
-  <h2><i class="fa-solid fa-satellite-dish"></i> Get in Touch</h2>
-  <div class="header-line"></div>
-</div>
-
-<p class="contact-intro">
-If your concern is security, clarity, or digital awareness — secure a transmission below.
-</p>
-
-<form class="contact-form" action="https://formspree.io/f/xpwoyvzz" method="POST">
-  <div class="input-group">
-    <i class="fa-solid fa-user"></i>
-    <input type="text" name="name" placeholder="Your Name" required>
-  </div>
-  <div class="input-group">
-    <i class="fa-solid fa-envelope"></i>
-    <input type="email" name="email" placeholder="Your Email" required>
-  </div>
-  <div class="input-group">
-    <i class="fa-solid fa-message"></i>
-    <textarea name="message" placeholder="Encrypted Message..." required></textarea>
-  </div>
-  <button type="submit" class="btn primary submit-btn"><i class="fa-solid fa-paper-plane"></i> Send Transmission</button>
-</form>
-
-<div class="social-icons">
-  <a href="https://github.com/vampiresquad" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
-  <a href="https://www.facebook.com/the.devastated.writer" target="_blank" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
-  <a href="https://www.instagram.com/the.devastated_writer" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-  <a href="https://www.threads.com/@the.devastated_writer" target="_blank" title="Threads"><i class="fa-brands fa-threads"></i></a>
-  <a href="mailto:vampiresquad.org@gmail.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
-</div>
-
-</section>
-
-<footer>
-<div class="footer-content">
-  <p>Built with discipline, patience, and faith.</p>
-  <p class="footer-brand"><i class="fa-solid fa-code"></i> Muhammad Shourov (Vampire)</p>
-</div>
 </footer>
 
 <script src="script.js"></script>
-
 </body>
 </html>
